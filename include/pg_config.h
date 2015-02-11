@@ -53,7 +53,7 @@
 /* #undef ENABLE_GSS */
 
 /* Define to 1 if you want National Language Support. (--enable-nls) */
-/* #undef ENABLE_NLS */
+#define ENABLE_NLS 1
 
 /* Define to 1 to build client libraries as thread-safe code.
    (--enable-thread-safety) */
@@ -373,6 +373,9 @@
 /* Define if you have POSIX threads libraries and header files. */
 /* #undef HAVE_PTHREAD */
 
+/* Define to 1 if you have the `pthread_is_threaded_np' function. */
+/* #undef HAVE_PTHREAD_IS_THREADED_NP */
+
 /* Define to 1 if you have the <pwd.h> header file. */
 #define HAVE_PWD_H 1
 
@@ -676,7 +679,7 @@
 #define PACKAGE_NAME "PostgreSQL"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "PostgreSQL 9.4.0"
+#define PACKAGE_STRING "PostgreSQL 9.4.1"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "postgresql"
@@ -685,7 +688,7 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "9.4.0"
+#define PACKAGE_VERSION "9.4.1"
 
 /* Define to the name of a signed 64-bit integer type. */
 #define PG_INT64_TYPE long long int
@@ -702,13 +705,13 @@
 #define PG_USE_INLINE 1
 
 /* PostgreSQL version as a string */
-#define PG_VERSION "9.4.0"
+#define PG_VERSION "9.4.1"
 
 /* PostgreSQL version as a number */
-#define PG_VERSION_NUM 90400
+#define PG_VERSION_NUM 90401
 
 /* A string containing the version number, platform, and C compiler */
-#define PG_VERSION_STR "PostgreSQL 9.4.0 on x86_64-w64-mingw32, compiled by x86_64-w64-mingw32-gcc.exe (Rev4, Built by MSYS2 project) 4.9.2, 64-bit"
+#define PG_VERSION_STR "PostgreSQL 9.4.1 on x86_64-w64-mingw32, compiled by x86_64-w64-mingw32-gcc.exe (Rev2, Built by MSYS2 project) 4.9.2, 64-bit"
 
 /* Define to 1 to allow profiling output to be saved separately for each
    process. */
