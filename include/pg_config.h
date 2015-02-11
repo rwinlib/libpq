@@ -53,7 +53,7 @@
 /* #undef ENABLE_GSS */
 
 /* Define to 1 if you want National Language Support. (--enable-nls) */
-#define ENABLE_NLS 1
+/* #undef ENABLE_NLS */
 
 /* Define to 1 to build client libraries as thread-safe code.
    (--enable-thread-safety) */
