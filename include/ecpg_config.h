@@ -11,10 +11,6 @@
 /* Define to 1 if `long long int' works and is 64 bits. */
 #define HAVE_LONG_LONG_INT_64 1
 
-/* Define to 1 if you want 64-bit integer timestamp and interval support.
-   (--enable-integer-datetimes) */
-#define USE_INTEGER_DATETIMES 1
-
 /* Define to 1 to build client libraries as thread-safe code.
  *    (--enable-thread-safety) */
-#define ENABLE_THREAD_SAFETY 1
+/* #undef ENABLE_THREAD_SAFETY */

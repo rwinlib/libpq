@@ -1,0 +1,9 @@
+Name: libpq
+Description: PostgreSQL libpq library
+Url: http://www.postgresql.org/
+Version: 11.1
+Requires: 
+Requires.private: 
+Cflags: -I/mingw64/include
+Libs: -L/mingw64/lib -lpq
+Libs.private:  -lssl -lcrypto -lwldap32 -lshell32 -lws2_32 -lsecur32
