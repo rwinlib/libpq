@@ -3,7 +3,7 @@
  * pg_extension_d.h
  *    Macro definitions for pg_extension
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,15 +20,16 @@
 
 #define ExtensionRelationId 3079
 
-#define Anum_pg_extension_extname 1
-#define Anum_pg_extension_extowner 2
-#define Anum_pg_extension_extnamespace 3
-#define Anum_pg_extension_extrelocatable 4
-#define Anum_pg_extension_extversion 5
-#define Anum_pg_extension_extconfig 6
-#define Anum_pg_extension_extcondition 7
+#define Anum_pg_extension_oid 1
+#define Anum_pg_extension_extname 2
+#define Anum_pg_extension_extowner 3
+#define Anum_pg_extension_extnamespace 4
+#define Anum_pg_extension_extrelocatable 5
+#define Anum_pg_extension_extversion 6
+#define Anum_pg_extension_extconfig 7
+#define Anum_pg_extension_extcondition 8
 
-#define Natts_pg_extension 7
+#define Natts_pg_extension 8
 
 
 #endif							/* PG_EXTENSION_D_H */

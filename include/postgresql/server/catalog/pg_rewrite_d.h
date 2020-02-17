@@ -3,7 +3,7 @@
  * pg_rewrite_d.h
  *    Macro definitions for pg_rewrite
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,15 +20,16 @@
 
 #define RewriteRelationId 2618
 
-#define Anum_pg_rewrite_rulename 1
-#define Anum_pg_rewrite_ev_class 2
-#define Anum_pg_rewrite_ev_type 3
-#define Anum_pg_rewrite_ev_enabled 4
-#define Anum_pg_rewrite_is_instead 5
-#define Anum_pg_rewrite_ev_qual 6
-#define Anum_pg_rewrite_ev_action 7
+#define Anum_pg_rewrite_oid 1
+#define Anum_pg_rewrite_rulename 2
+#define Anum_pg_rewrite_ev_class 3
+#define Anum_pg_rewrite_ev_type 4
+#define Anum_pg_rewrite_ev_enabled 5
+#define Anum_pg_rewrite_is_instead 6
+#define Anum_pg_rewrite_ev_qual 7
+#define Anum_pg_rewrite_ev_action 8
 
-#define Natts_pg_rewrite 7
+#define Natts_pg_rewrite 8
 
 
 #endif							/* PG_REWRITE_D_H */

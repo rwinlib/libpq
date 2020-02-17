@@ -3,7 +3,7 @@
  * pg_foreign_data_wrapper_d.h
  *    Macro definitions for pg_foreign_data_wrapper
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,14 +20,15 @@
 
 #define ForeignDataWrapperRelationId 2328
 
-#define Anum_pg_foreign_data_wrapper_fdwname 1
-#define Anum_pg_foreign_data_wrapper_fdwowner 2
-#define Anum_pg_foreign_data_wrapper_fdwhandler 3
-#define Anum_pg_foreign_data_wrapper_fdwvalidator 4
-#define Anum_pg_foreign_data_wrapper_fdwacl 5
-#define Anum_pg_foreign_data_wrapper_fdwoptions 6
+#define Anum_pg_foreign_data_wrapper_oid 1
+#define Anum_pg_foreign_data_wrapper_fdwname 2
+#define Anum_pg_foreign_data_wrapper_fdwowner 3
+#define Anum_pg_foreign_data_wrapper_fdwhandler 4
+#define Anum_pg_foreign_data_wrapper_fdwvalidator 5
+#define Anum_pg_foreign_data_wrapper_fdwacl 6
+#define Anum_pg_foreign_data_wrapper_fdwoptions 7
 
-#define Natts_pg_foreign_data_wrapper 6
+#define Natts_pg_foreign_data_wrapper 7
 
 
 #endif							/* PG_FOREIGN_DATA_WRAPPER_D_H */

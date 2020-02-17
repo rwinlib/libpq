@@ -1,8 +1,7 @@
 # libpq
 
-Built with rtools40 gcc 8:
+Built with [rtools-packages](https://github.com/r-windows/rtools-packages/tree/master/mingw-w64-libpq) rtools40 gcc 8.3.0:
 
- - openssl 1.1.1a
- - postgres 11.1.0
+ - openssl 1.1.1d
+ - postgres 12.2.0
  
-See also [PKGBUILD](mingw-w64-libpq/PKGBUILD) file.

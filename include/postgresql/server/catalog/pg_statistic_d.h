@@ -3,7 +3,7 @@
  * pg_statistic_d.h
  *    Macro definitions for pg_statistic
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -36,18 +36,23 @@
 #define Anum_pg_statistic_staop3 14
 #define Anum_pg_statistic_staop4 15
 #define Anum_pg_statistic_staop5 16
-#define Anum_pg_statistic_stanumbers1 17
-#define Anum_pg_statistic_stanumbers2 18
-#define Anum_pg_statistic_stanumbers3 19
-#define Anum_pg_statistic_stanumbers4 20
-#define Anum_pg_statistic_stanumbers5 21
-#define Anum_pg_statistic_stavalues1 22
-#define Anum_pg_statistic_stavalues2 23
-#define Anum_pg_statistic_stavalues3 24
-#define Anum_pg_statistic_stavalues4 25
-#define Anum_pg_statistic_stavalues5 26
+#define Anum_pg_statistic_stacoll1 17
+#define Anum_pg_statistic_stacoll2 18
+#define Anum_pg_statistic_stacoll3 19
+#define Anum_pg_statistic_stacoll4 20
+#define Anum_pg_statistic_stacoll5 21
+#define Anum_pg_statistic_stanumbers1 22
+#define Anum_pg_statistic_stanumbers2 23
+#define Anum_pg_statistic_stanumbers3 24
+#define Anum_pg_statistic_stanumbers4 25
+#define Anum_pg_statistic_stanumbers5 26
+#define Anum_pg_statistic_stavalues1 27
+#define Anum_pg_statistic_stavalues2 28
+#define Anum_pg_statistic_stavalues3 29
+#define Anum_pg_statistic_stavalues4 30
+#define Anum_pg_statistic_stavalues5 31
 
-#define Natts_pg_statistic 26
+#define Natts_pg_statistic 31
 
 
 /*
@@ -81,7 +86,8 @@
 
 /*
  * In a "most common values" slot, staop is the OID of the "=" operator
- * used to decide whether values are the same or not.  stavalues contains
+ * used to decide whether values are the same or not, and stacoll is the
+ * collation used (same as column's collation).  stavalues contains
  * the K most common non-null values appearing in the column, and stanumbers
  * contains their frequencies (fractions of total row count).  The values
  * shall be ordered in decreasing frequency.  Note that since the arrays are
@@ -93,9 +99,11 @@
 
 /*
  * A "histogram" slot describes the distribution of scalar data.  staop is
- * the OID of the "<" operator that describes the sort ordering.  (In theory,
- * more than one histogram could appear, if a datatype has more than one
- * useful sort operator.)  stavalues contains M (>=2) non-null values that
+ * the OID of the "<" operator that describes the sort ordering, and stacoll
+ * is the relevant collation.  (In theory more than one histogram could appear,
+ * if a datatype has more than one useful sort operator or we care about more
+ * than one collation.  Currently the collation will always be that of the
+ * underlying column.)  stavalues contains M (>=2) non-null values that
  * divide the non-null column data values into M-1 bins of approximately equal
  * population.  The first stavalues item is the MIN and the last is the MAX.
  * stanumbers is not used and should be NULL.  IMPORTANT POINT: if an MCV
@@ -112,11 +120,12 @@
 /*
  * A "correlation" slot describes the correlation between the physical order
  * of table tuples and the ordering of data values of this column, as seen
- * by the "<" operator identified by staop.  (As with the histogram, more
- * than one entry could theoretically appear.)	stavalues is not used and
- * should be NULL.  stanumbers contains a single entry, the correlation
- * coefficient between the sequence of data values and the sequence of
- * their actual tuple positions.  The coefficient ranges from +1 to -1.
+ * by the "<" operator identified by staop with the collation identified by
+ * stacoll.  (As with the histogram, more than one entry could theoretically
+ * appear.)  stavalues is not used and should be NULL.  stanumbers contains
+ * a single entry, the correlation coefficient between the sequence of data
+ * values and the sequence of their actual tuple positions.  The coefficient
+ * ranges from +1 to -1.
  */
 #define STATISTIC_KIND_CORRELATION	3
 
@@ -125,7 +134,8 @@
  * except that it stores the most common non-null *elements* of the column
  * values.  This is useful when the column datatype is an array or some other
  * type with identifiable elements (for instance, tsvector).  staop contains
- * the equality operator appropriate to the element type.  stavalues contains
+ * the equality operator appropriate to the element type, and stacoll
+ * contains the collation to use with it.  stavalues contains
  * the most common element values, and stanumbers their frequencies.  Unlike
  * MCV slots, frequencies are measured as the fraction of non-null rows the
  * element value appears in, not the frequency of all rows.  Also unlike
@@ -148,7 +158,8 @@
  * A "distinct elements count histogram" slot describes the distribution of
  * the number of distinct element values present in each row of an array-type
  * column.  Only non-null rows are considered, and only non-null elements.
- * staop contains the equality operator appropriate to the element type.
+ * staop contains the equality operator appropriate to the element type,
+ * and stacoll contains the collation to use with it.
  * stavalues is not used and should be NULL.  The last member of stanumbers is
  * the average count of distinct element values over all non-null rows.  The
  * preceding M (>=2) members form a histogram that divides the population of

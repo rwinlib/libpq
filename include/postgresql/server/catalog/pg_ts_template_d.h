@@ -3,7 +3,7 @@
  * pg_ts_template_d.h
  *    Macro definitions for pg_ts_template
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,12 +20,13 @@
 
 #define TSTemplateRelationId 3764
 
-#define Anum_pg_ts_template_tmplname 1
-#define Anum_pg_ts_template_tmplnamespace 2
-#define Anum_pg_ts_template_tmplinit 3
-#define Anum_pg_ts_template_tmpllexize 4
+#define Anum_pg_ts_template_oid 1
+#define Anum_pg_ts_template_tmplname 2
+#define Anum_pg_ts_template_tmplnamespace 3
+#define Anum_pg_ts_template_tmplinit 4
+#define Anum_pg_ts_template_tmpllexize 5
 
-#define Natts_pg_ts_template 4
+#define Natts_pg_ts_template 5
 
 
 #endif							/* PG_TS_TEMPLATE_D_H */

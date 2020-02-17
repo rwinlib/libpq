@@ -3,7 +3,7 @@
  * pg_operator_d.h
  *    Macro definitions for pg_operator
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,22 +20,23 @@
 
 #define OperatorRelationId 2617
 
-#define Anum_pg_operator_oprname 1
-#define Anum_pg_operator_oprnamespace 2
-#define Anum_pg_operator_oprowner 3
-#define Anum_pg_operator_oprkind 4
-#define Anum_pg_operator_oprcanmerge 5
-#define Anum_pg_operator_oprcanhash 6
-#define Anum_pg_operator_oprleft 7
-#define Anum_pg_operator_oprright 8
-#define Anum_pg_operator_oprresult 9
-#define Anum_pg_operator_oprcom 10
-#define Anum_pg_operator_oprnegate 11
-#define Anum_pg_operator_oprcode 12
-#define Anum_pg_operator_oprrest 13
-#define Anum_pg_operator_oprjoin 14
+#define Anum_pg_operator_oid 1
+#define Anum_pg_operator_oprname 2
+#define Anum_pg_operator_oprnamespace 3
+#define Anum_pg_operator_oprowner 4
+#define Anum_pg_operator_oprkind 5
+#define Anum_pg_operator_oprcanmerge 6
+#define Anum_pg_operator_oprcanhash 7
+#define Anum_pg_operator_oprleft 8
+#define Anum_pg_operator_oprright 9
+#define Anum_pg_operator_oprresult 10
+#define Anum_pg_operator_oprcom 11
+#define Anum_pg_operator_oprnegate 12
+#define Anum_pg_operator_oprcode 13
+#define Anum_pg_operator_oprrest 14
+#define Anum_pg_operator_oprjoin 15
 
-#define Natts_pg_operator 14
+#define Natts_pg_operator 15
 
 #define BooleanNotEqualOperator 85
 #define BooleanEqualOperator 91

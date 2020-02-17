@@ -3,7 +3,7 @@
  * pg_amop_d.h
  *    Macro definitions for pg_amop
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,16 +20,17 @@
 
 #define AccessMethodOperatorRelationId 2602
 
-#define Anum_pg_amop_amopfamily 1
-#define Anum_pg_amop_amoplefttype 2
-#define Anum_pg_amop_amoprighttype 3
-#define Anum_pg_amop_amopstrategy 4
-#define Anum_pg_amop_amoppurpose 5
-#define Anum_pg_amop_amopopr 6
-#define Anum_pg_amop_amopmethod 7
-#define Anum_pg_amop_amopsortfamily 8
+#define Anum_pg_amop_oid 1
+#define Anum_pg_amop_amopfamily 2
+#define Anum_pg_amop_amoplefttype 3
+#define Anum_pg_amop_amoprighttype 4
+#define Anum_pg_amop_amopstrategy 5
+#define Anum_pg_amop_amoppurpose 6
+#define Anum_pg_amop_amopopr 7
+#define Anum_pg_amop_amopmethod 8
+#define Anum_pg_amop_amopsortfamily 9
 
-#define Natts_pg_amop 8
+#define Natts_pg_amop 9
 
 
 /* allowed values of amoppurpose: */

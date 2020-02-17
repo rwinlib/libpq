@@ -3,7 +3,7 @@
  * pg_opclass_d.h
  *    Macro definitions for pg_opclass
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,16 +20,17 @@
 
 #define OperatorClassRelationId 2616
 
-#define Anum_pg_opclass_opcmethod 1
-#define Anum_pg_opclass_opcname 2
-#define Anum_pg_opclass_opcnamespace 3
-#define Anum_pg_opclass_opcowner 4
-#define Anum_pg_opclass_opcfamily 5
-#define Anum_pg_opclass_opcintype 6
-#define Anum_pg_opclass_opcdefault 7
-#define Anum_pg_opclass_opckeytype 8
+#define Anum_pg_opclass_oid 1
+#define Anum_pg_opclass_opcmethod 2
+#define Anum_pg_opclass_opcname 3
+#define Anum_pg_opclass_opcnamespace 4
+#define Anum_pg_opclass_opcowner 5
+#define Anum_pg_opclass_opcfamily 6
+#define Anum_pg_opclass_opcintype 7
+#define Anum_pg_opclass_opcdefault 8
+#define Anum_pg_opclass_opckeytype 9
 
-#define Natts_pg_opclass 8
+#define Natts_pg_opclass 9
 
 #define DATE_BTREE_OPS_OID 3122
 #define FLOAT8_BTREE_OPS_OID 3123
@@ -41,5 +42,8 @@
 #define TEXT_BTREE_OPS_OID 3126
 #define TIMESTAMPTZ_BTREE_OPS_OID 3127
 #define TIMESTAMP_BTREE_OPS_OID 3128
+#define TEXT_BTREE_PATTERN_OPS_OID 4217
+#define VARCHAR_BTREE_PATTERN_OPS_OID 4218
+#define BPCHAR_BTREE_PATTERN_OPS_OID 4219
 
 #endif							/* PG_OPCLASS_D_H */

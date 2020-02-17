@@ -3,7 +3,7 @@
  * pg_attribute_d.h
  *    Macro definitions for pg_attribute
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -37,20 +37,23 @@
 #define Anum_pg_attribute_atthasdef 14
 #define Anum_pg_attribute_atthasmissing 15
 #define Anum_pg_attribute_attidentity 16
-#define Anum_pg_attribute_attisdropped 17
-#define Anum_pg_attribute_attislocal 18
-#define Anum_pg_attribute_attinhcount 19
-#define Anum_pg_attribute_attcollation 20
-#define Anum_pg_attribute_attacl 21
-#define Anum_pg_attribute_attoptions 22
-#define Anum_pg_attribute_attfdwoptions 23
-#define Anum_pg_attribute_attmissingval 24
+#define Anum_pg_attribute_attgenerated 17
+#define Anum_pg_attribute_attisdropped 18
+#define Anum_pg_attribute_attislocal 19
+#define Anum_pg_attribute_attinhcount 20
+#define Anum_pg_attribute_attcollation 21
+#define Anum_pg_attribute_attacl 22
+#define Anum_pg_attribute_attoptions 23
+#define Anum_pg_attribute_attfdwoptions 24
+#define Anum_pg_attribute_attmissingval 25
 
-#define Natts_pg_attribute 24
+#define Natts_pg_attribute 25
 
 
 #define		  ATTRIBUTE_IDENTITY_ALWAYS		'a'
 #define		  ATTRIBUTE_IDENTITY_BY_DEFAULT 'd'
+
+#define		  ATTRIBUTE_GENERATED_STORED	's'
 
 
 #endif							/* PG_ATTRIBUTE_D_H */

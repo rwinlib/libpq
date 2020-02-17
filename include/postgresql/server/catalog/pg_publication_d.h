@@ -3,7 +3,7 @@
  * pg_publication_d.h
  *    Macro definitions for pg_publication
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,15 +20,16 @@
 
 #define PublicationRelationId 6104
 
-#define Anum_pg_publication_pubname 1
-#define Anum_pg_publication_pubowner 2
-#define Anum_pg_publication_puballtables 3
-#define Anum_pg_publication_pubinsert 4
-#define Anum_pg_publication_pubupdate 5
-#define Anum_pg_publication_pubdelete 6
-#define Anum_pg_publication_pubtruncate 7
+#define Anum_pg_publication_oid 1
+#define Anum_pg_publication_pubname 2
+#define Anum_pg_publication_pubowner 3
+#define Anum_pg_publication_puballtables 4
+#define Anum_pg_publication_pubinsert 5
+#define Anum_pg_publication_pubupdate 6
+#define Anum_pg_publication_pubdelete 7
+#define Anum_pg_publication_pubtruncate 8
 
-#define Natts_pg_publication 7
+#define Natts_pg_publication 8
 
 
 #endif							/* PG_PUBLICATION_D_H */

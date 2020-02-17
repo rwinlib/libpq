@@ -1,9 +1,0 @@
-Name: libecpg
-Description: PostgreSQL libecpg library
-Url: http://www.postgresql.org/
-Version: 11.1
-Requires: 
-Requires.private: libpq libpgtypes
-Cflags: -I/mingw64/include
-Libs: -L/mingw64/lib -lecpg
-Libs.private:  -lm

@@ -3,7 +3,7 @@
  * pg_policy_d.h
  *    Macro definitions for pg_policy
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,15 +20,16 @@
 
 #define PolicyRelationId 3256
 
-#define Anum_pg_policy_polname 1
-#define Anum_pg_policy_polrelid 2
-#define Anum_pg_policy_polcmd 3
-#define Anum_pg_policy_polpermissive 4
-#define Anum_pg_policy_polroles 5
-#define Anum_pg_policy_polqual 6
-#define Anum_pg_policy_polwithcheck 7
+#define Anum_pg_policy_oid 1
+#define Anum_pg_policy_polname 2
+#define Anum_pg_policy_polrelid 3
+#define Anum_pg_policy_polcmd 4
+#define Anum_pg_policy_polpermissive 5
+#define Anum_pg_policy_polroles 6
+#define Anum_pg_policy_polqual 7
+#define Anum_pg_policy_polwithcheck 8
 
-#define Natts_pg_policy 7
+#define Natts_pg_policy 8
 
 
 #endif							/* PG_POLICY_D_H */

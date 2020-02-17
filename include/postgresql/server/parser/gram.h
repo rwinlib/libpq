@@ -1,8 +1,9 @@
-/* A Bison parser, made by GNU Bison 3.0.4.  */
+/* A Bison parser, made by GNU Bison 3.3.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2019 Free Software Foundation,
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,6 +30,9 @@
 
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
+
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
 
 #ifndef YY_BASE_YY_GRAM_H_INCLUDED
 # define YY_BASE_YY_GRAM_H_INCLUDED
@@ -418,93 +422,95 @@ extern int base_yydebug;
     STDIN = 628,
     STDOUT = 629,
     STORAGE = 630,
-    STRICT_P = 631,
-    STRIP_P = 632,
-    SUBSCRIPTION = 633,
-    SUBSTRING = 634,
-    SYMMETRIC = 635,
-    SYSID = 636,
-    SYSTEM_P = 637,
-    TABLE = 638,
-    TABLES = 639,
-    TABLESAMPLE = 640,
-    TABLESPACE = 641,
-    TEMP = 642,
-    TEMPLATE = 643,
-    TEMPORARY = 644,
-    TEXT_P = 645,
-    THEN = 646,
-    TIES = 647,
-    TIME = 648,
-    TIMESTAMP = 649,
-    TO = 650,
-    TRAILING = 651,
-    TRANSACTION = 652,
-    TRANSFORM = 653,
-    TREAT = 654,
-    TRIGGER = 655,
-    TRIM = 656,
-    TRUE_P = 657,
-    TRUNCATE = 658,
-    TRUSTED = 659,
-    TYPE_P = 660,
-    TYPES_P = 661,
-    UNBOUNDED = 662,
-    UNCOMMITTED = 663,
-    UNENCRYPTED = 664,
-    UNION = 665,
-    UNIQUE = 666,
-    UNKNOWN = 667,
-    UNLISTEN = 668,
-    UNLOGGED = 669,
-    UNTIL = 670,
-    UPDATE = 671,
-    USER = 672,
-    USING = 673,
-    VACUUM = 674,
-    VALID = 675,
-    VALIDATE = 676,
-    VALIDATOR = 677,
-    VALUE_P = 678,
-    VALUES = 679,
-    VARCHAR = 680,
-    VARIADIC = 681,
-    VARYING = 682,
-    VERBOSE = 683,
-    VERSION_P = 684,
-    VIEW = 685,
-    VIEWS = 686,
-    VOLATILE = 687,
-    WHEN = 688,
-    WHERE = 689,
-    WHITESPACE_P = 690,
-    WINDOW = 691,
-    WITH = 692,
-    WITHIN = 693,
-    WITHOUT = 694,
-    WORK = 695,
-    WRAPPER = 696,
-    WRITE = 697,
-    XML_P = 698,
-    XMLATTRIBUTES = 699,
-    XMLCONCAT = 700,
-    XMLELEMENT = 701,
-    XMLEXISTS = 702,
-    XMLFOREST = 703,
-    XMLNAMESPACES = 704,
-    XMLPARSE = 705,
-    XMLPI = 706,
-    XMLROOT = 707,
-    XMLSERIALIZE = 708,
-    XMLTABLE = 709,
-    YEAR_P = 710,
-    YES_P = 711,
-    ZONE = 712,
-    NOT_LA = 713,
-    NULLS_LA = 714,
-    WITH_LA = 715,
-    POSTFIXOP = 716,
-    UMINUS = 717
+    STORED = 631,
+    STRICT_P = 632,
+    STRIP_P = 633,
+    SUBSCRIPTION = 634,
+    SUBSTRING = 635,
+    SUPPORT = 636,
+    SYMMETRIC = 637,
+    SYSID = 638,
+    SYSTEM_P = 639,
+    TABLE = 640,
+    TABLES = 641,
+    TABLESAMPLE = 642,
+    TABLESPACE = 643,
+    TEMP = 644,
+    TEMPLATE = 645,
+    TEMPORARY = 646,
+    TEXT_P = 647,
+    THEN = 648,
+    TIES = 649,
+    TIME = 650,
+    TIMESTAMP = 651,
+    TO = 652,
+    TRAILING = 653,
+    TRANSACTION = 654,
+    TRANSFORM = 655,
+    TREAT = 656,
+    TRIGGER = 657,
+    TRIM = 658,
+    TRUE_P = 659,
+    TRUNCATE = 660,
+    TRUSTED = 661,
+    TYPE_P = 662,
+    TYPES_P = 663,
+    UNBOUNDED = 664,
+    UNCOMMITTED = 665,
+    UNENCRYPTED = 666,
+    UNION = 667,
+    UNIQUE = 668,
+    UNKNOWN = 669,
+    UNLISTEN = 670,
+    UNLOGGED = 671,
+    UNTIL = 672,
+    UPDATE = 673,
+    USER = 674,
+    USING = 675,
+    VACUUM = 676,
+    VALID = 677,
+    VALIDATE = 678,
+    VALIDATOR = 679,
+    VALUE_P = 680,
+    VALUES = 681,
+    VARCHAR = 682,
+    VARIADIC = 683,
+    VARYING = 684,
+    VERBOSE = 685,
+    VERSION_P = 686,
+    VIEW = 687,
+    VIEWS = 688,
+    VOLATILE = 689,
+    WHEN = 690,
+    WHERE = 691,
+    WHITESPACE_P = 692,
+    WINDOW = 693,
+    WITH = 694,
+    WITHIN = 695,
+    WITHOUT = 696,
+    WORK = 697,
+    WRAPPER = 698,
+    WRITE = 699,
+    XML_P = 700,
+    XMLATTRIBUTES = 701,
+    XMLCONCAT = 702,
+    XMLELEMENT = 703,
+    XMLEXISTS = 704,
+    XMLFOREST = 705,
+    XMLNAMESPACES = 706,
+    XMLPARSE = 707,
+    XMLPI = 708,
+    XMLROOT = 709,
+    XMLSERIALIZE = 710,
+    XMLTABLE = 711,
+    YEAR_P = 712,
+    YES_P = 713,
+    ZONE = 714,
+    NOT_LA = 715,
+    NULLS_LA = 716,
+    WITH_LA = 717,
+    POSTFIXOP = 718,
+    UMINUS = 719
   };
 #endif
 
@@ -513,7 +519,7 @@ extern int base_yydebug;
 
 union YYSTYPE
 {
-#line 202 "gram.y" /* yacc.c:1909  */
+#line 203 "gram.y" /* yacc.c:1921  */
 
 	core_YYSTYPE		core_yystype;
 	/* these fields must match core_YYSTYPE: */
@@ -557,7 +563,7 @@ union YYSTYPE
 	PartitionBoundSpec	*partboundspec;
 	RoleSpec			*rolespec;
 
-#line 561 "gram.h" /* yacc.c:1909  */
+#line 567 "gram.h" /* yacc.c:1921  */
 };
 
 typedef union YYSTYPE YYSTYPE;

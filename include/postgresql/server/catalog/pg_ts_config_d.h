@@ -3,7 +3,7 @@
  * pg_ts_config_d.h
  *    Macro definitions for pg_ts_config
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,12 +20,13 @@
 
 #define TSConfigRelationId 3602
 
-#define Anum_pg_ts_config_cfgname 1
-#define Anum_pg_ts_config_cfgnamespace 2
-#define Anum_pg_ts_config_cfgowner 3
-#define Anum_pg_ts_config_cfgparser 4
+#define Anum_pg_ts_config_oid 1
+#define Anum_pg_ts_config_cfgname 2
+#define Anum_pg_ts_config_cfgnamespace 3
+#define Anum_pg_ts_config_cfgowner 4
+#define Anum_pg_ts_config_cfgparser 5
 
-#define Natts_pg_ts_config 4
+#define Natts_pg_ts_config 5
 
 
 #endif							/* PG_TS_CONFIG_D_H */

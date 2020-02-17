@@ -3,7 +3,7 @@
  * pg_cast_d.h
  *    Macro definitions for pg_cast
  *
- * Portions Copyright (c) 1996-2018, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -20,13 +20,14 @@
 
 #define CastRelationId 2605
 
-#define Anum_pg_cast_castsource 1
-#define Anum_pg_cast_casttarget 2
-#define Anum_pg_cast_castfunc 3
-#define Anum_pg_cast_castcontext 4
-#define Anum_pg_cast_castmethod 5
+#define Anum_pg_cast_oid 1
+#define Anum_pg_cast_castsource 2
+#define Anum_pg_cast_casttarget 3
+#define Anum_pg_cast_castfunc 4
+#define Anum_pg_cast_castcontext 5
+#define Anum_pg_cast_castmethod 6
 
-#define Natts_pg_cast 5
+#define Natts_pg_cast 6
 
 
 /*
