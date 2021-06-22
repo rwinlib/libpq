@@ -9,7 +9,7 @@
  *	  more likely to break across PostgreSQL releases than code that uses
  *	  only the official API.
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/interfaces/libpq/libpq-int.h
@@ -169,7 +169,7 @@ struct pg_result
 	int			ntups;
 	int			numAttributes;
 	PGresAttDesc *attDescs;
-	PGresAttValue **tuples;		/* each PGresTuple is an array of
+	PGresAttValue **tuples;		/* each PGresult tuple is an array of
 								 * PGresAttValue's */
 	int			tupArrSize;		/* allocated size of tuples array */
 	int			numParameters;
@@ -232,7 +232,8 @@ typedef enum
 	PGQUERY_DESCRIBE			/* Describe Statement or Portal */
 } PGQueryClass;
 
-/* PGSetenvStatusType defines the state of the PQSetenv state machine */
+/* PGSetenvStatusType defines the state of the pqSetenv state machine */
+
 /* (this is used only for 2.0-protocol connections) */
 typedef enum
 {
@@ -346,6 +347,8 @@ struct pg_conn
 	char	   *pguser;			/* Postgres username and password, if any */
 	char	   *pgpass;
 	char	   *pgpassfile;		/* path to a file containing password(s) */
+	char	   *channel_binding;	/* channel binding mode
+									 * (require,prefer,disable) */
 	char	   *keepalives;		/* use TCP keepalives? */
 	char	   *keepalives_idle;	/* time between TCP keepalives */
 	char	   *keepalives_interval;	/* time between TCP keepalive
@@ -356,6 +359,7 @@ struct pg_conn
 	char	   *sslcompression; /* SSL compression (0 or 1) */
 	char	   *sslkey;			/* client key filename */
 	char	   *sslcert;		/* client certificate filename */
+	char	   *sslpassword;	/* client key file password */
 	char	   *sslrootcert;	/* root certificate filename */
 	char	   *sslcrl;			/* certificate revocation list filename */
 	char	   *requirepeer;	/* required peer credentials for local sockets */
@@ -363,6 +367,8 @@ struct pg_conn
 	char	   *krbsrvname;		/* Kerberos service name */
 	char	   *gsslib;			/* What GSS library to use ("gssapi" or
 								 * "sspi") */
+	char	   *ssl_min_protocol_version;	/* minimum TLS protocol version */
+	char	   *ssl_max_protocol_version;	/* maximum TLS protocol version */
 
 	/* Type of connection to make.  Possible values: any, read-write. */
 	char	   *target_session_attrs;
@@ -672,7 +678,6 @@ extern int	pqWriteReady(PGconn *conn);
 /* === in fe-secure.c === */
 
 extern int	pqsecure_initialize(PGconn *);
-extern void pqsecure_destroy(void);
 extern PostgresPollingStatusType pqsecure_open_client(PGconn *);
 extern void pqsecure_close(PGconn *);
 extern ssize_t pqsecure_read(PGconn *, void *ptr, size_t len);

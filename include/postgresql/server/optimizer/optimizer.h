@@ -12,7 +12,7 @@
  * example.  For the most part, however, code outside the core planner
  * should not need to include any optimizer/ header except this one.
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/include/optimizer/optimizer.h
@@ -23,6 +23,11 @@
 #define OPTIMIZER_H
 
 #include "nodes/parsenodes.h"
+
+/* Test if an expression node represents a SRF call.  Beware multiple eval! */
+#define IS_SRF_CALL(node) \
+	((IsA(node, FuncExpr) && ((FuncExpr *) (node))->funcretset) || \
+	 (IsA(node, OpExpr) && ((OpExpr *) (node))->opretset))
 
 /*
  * We don't want to include nodes/pathnodes.h here, because non-planner
@@ -87,6 +92,8 @@ extern double clamp_row_est(double nrows);
 /* in path/indxpath.c: */
 
 extern bool is_pseudo_constant_for_index(Node *expr, IndexOptInfo *index);
+extern bool is_pseudo_constant_for_index_new(PlannerInfo *root, Node *expr,
+											 IndexOptInfo *index);
 
 /* in plan/planner.c: */
 
@@ -102,7 +109,8 @@ typedef enum
 extern int	force_parallel_mode;
 extern bool parallel_leader_participation;
 
-extern struct PlannedStmt *planner(Query *parse, int cursorOptions,
+extern struct PlannedStmt *planner(Query *parse, const char *query_string,
+								   int cursorOptions,
 								   struct ParamListInfoData *boundParams);
 
 extern Expr *expression_planner(Expr *expr);
@@ -178,6 +186,8 @@ extern SortGroupClause *get_sortgroupref_clause_noerr(Index sortref,
 
 extern Bitmapset *pull_varnos(Node *node);
 extern Bitmapset *pull_varnos_of_level(Node *node, int levelsup);
+extern Bitmapset *pull_varnos_new(PlannerInfo *root, Node *node);
+extern Bitmapset *pull_varnos_of_level_new(PlannerInfo *root, Node *node, int levelsup);
 extern void pull_varattnos(Node *node, Index varno, Bitmapset **varattnos);
 extern List *pull_vars_of_level(Node *node, int levelsup);
 extern bool contain_var_clause(Node *node);

@@ -4,7 +4,7 @@
  *	  prototypes for partprune.c
  *
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/include/partitioning/partprune.h
@@ -60,10 +60,10 @@ typedef struct PartitionPruneContext
 } PartitionPruneContext;
 
 /*
- * PruneCxtStateIdx() computes the correct index into the stepcmpfuncs[],
- * exprstates[] and exprhasexecparam[] arrays for step step_id and
- * partition key column keyno.  (Note: there is code that assumes the
- * entries for a given step are sequential, so this is not chosen freely.)
+ * PruneCxtStateIdx() computes the correct index into the stepcmpfuncs[]
+ * and exprstates[] arrays for step step_id and partition key column keyno.
+ * (Note: there is code that assumes the entries for a given step are
+ * sequential, so this is not chosen freely.)
  */
 #define PruneCxtStateIdx(partnatts, step_id, keyno) \
 	((partnatts) * (step_id) + (keyno))

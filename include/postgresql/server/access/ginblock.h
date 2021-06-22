@@ -2,7 +2,7 @@
  * ginblock.h
  *	  details of structures stored in GIN index blocks
  *
- *	Copyright (c) 2006-2019, PostgreSQL Global Development Group
+ *	Copyright (c) 2006-2020, PostgreSQL Global Development Group
  *
  *	src/include/access/ginblock.h
  *--------------------------------------------------------------------------
@@ -171,9 +171,6 @@ typedef struct GinMetaPageData
 	 GinItemPointerGetBlockNumber(p) == (BlockNumber)0)
 #define ItemPointerSetMax(p)  \
 	ItemPointerSet((p), InvalidBlockNumber, (OffsetNumber)0xffff)
-#define ItemPointerIsMax(p)  \
-	(GinItemPointerGetOffsetNumber(p) == (OffsetNumber)0xffff && \
-	 GinItemPointerGetBlockNumber(p) == InvalidBlockNumber)
 #define ItemPointerSetLossyPage(p, b)  \
 	ItemPointerSet((p), (b), (OffsetNumber)0xffff)
 #define ItemPointerIsLossyPage(p)  \

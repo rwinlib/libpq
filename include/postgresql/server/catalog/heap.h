@@ -4,7 +4,7 @@
  *	  prototypes for functions in backend/catalog/heap.c
  *
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/include/catalog/heap.h
@@ -95,6 +95,7 @@ extern List *heap_truncate_find_FKs(List *relationIds);
 
 extern void InsertPgAttributeTuple(Relation pg_attribute_rel,
 								   Form_pg_attribute new_attribute,
+								   Datum attoptions,
 								   CatalogIndexState indstate);
 
 extern void InsertPgClassTuple(Relation pg_class_desc,
@@ -132,6 +133,7 @@ extern void RemoveAttributeById(Oid relid, AttrNumber attnum);
 extern void RemoveAttrDefault(Oid relid, AttrNumber attnum,
 							  DropBehavior behavior, bool complain, bool internal);
 extern void RemoveAttrDefaultById(Oid attrdefId);
+extern void CopyStatistics(Oid fromrelid, Oid torelid);
 extern void RemoveStatistics(Oid relid, AttrNumber attnum);
 
 extern const FormData_pg_attribute *SystemAttributeDefinition(AttrNumber attno);

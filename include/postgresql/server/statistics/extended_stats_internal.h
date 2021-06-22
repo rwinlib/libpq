@@ -3,7 +3,7 @@
  * extended_stats_internal.h
  *	  POSTGRES extended statistics internal declarations
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * IDENTIFICATION
@@ -14,9 +14,8 @@
 #ifndef EXTENDED_STATS_INTERNAL_H
 #define EXTENDED_STATS_INTERNAL_H
 
-#include "utils/sortsupport.h"
 #include "statistics/statistics.h"
-
+#include "utils/sortsupport.h"
 
 typedef struct
 {
@@ -36,7 +35,7 @@ typedef struct DimensionInfo
 {
 	int			nvalues;		/* number of deduplicated values */
 	int			nbytes;			/* number of bytes (serialized) */
-	int			nbytes_aligned;	/* size of deserialized data with alignment */
+	int			nbytes_aligned; /* size of deserialized data with alignment */
 	int			typlen;			/* pg_type.typlen */
 	bool		typbyval;		/* pg_type.typbyval */
 } DimensionInfo;
@@ -71,7 +70,7 @@ extern MVDependencies *statext_dependencies_deserialize(bytea *data);
 
 extern MCVList *statext_mcv_build(int numrows, HeapTuple *rows,
 								  Bitmapset *attrs, VacAttrStats **stats,
-								  double totalrows);
+								  double totalrows, int stattarget);
 extern bytea *statext_mcv_serialize(MCVList *mcv, VacAttrStats **stats);
 extern MCVList *statext_mcv_deserialize(bytea *data);
 
@@ -97,8 +96,8 @@ extern SortItem *build_sorted_items(int numrows, int *nitems, HeapTuple *rows,
 									TupleDesc tdesc, MultiSortSupport mss,
 									int numattrs, AttrNumber *attnums);
 
-extern bool examine_opclause_expression(OpExpr *expr, Var **varp,
-										Const **cstp, bool *varonleftp);
+extern bool examine_clause_args(List *args, Var **varp,
+								Const **cstp, bool *varonleftp);
 
 extern Selectivity mcv_clauselist_selectivity(PlannerInfo *root,
 											  StatisticExtInfo *stat,

@@ -3,7 +3,7 @@
  *
  * PostgreSQL multi-transaction-log manager
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/include/access/multixact.h
@@ -29,8 +29,8 @@
 #define MaxMultiXactOffset	((MultiXactOffset) 0xFFFFFFFF)
 
 /* Number of SLRU buffers to use for multixact */
-#define NUM_MXACTOFFSET_BUFFERS		8
-#define NUM_MXACTMEMBER_BUFFERS		16
+#define NUM_MULTIXACTOFFSET_BUFFERS		8
+#define NUM_MULTIXACTMEMBER_BUFFERS		16
 
 /*
  * Possible multixact lock modes ("status").  The first four modes are for

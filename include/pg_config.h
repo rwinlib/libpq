@@ -43,6 +43,9 @@
    Changing BLCKSZ requires an initdb. */
 #define BLCKSZ 8192
 
+/* Saved arguments from configure */
+#define CONFIGURE_ARGS " '--build=x86_64-w64-mingw32' '--host=x86_64-w64-mingw32' '--target=x86_64-w64-mingw32' '--prefix=/mingw64' '--with-openssl' '--with-ldap' '--disable-thread-safety' '--enable-integer-datetimes' '--disable-nls' '--disable-rpath' '--without-libxml' '--without-libxslt' '--without-python' '--without-perl' '--without-tcl' 'build_alias=x86_64-w64-mingw32' 'host_alias=x86_64-w64-mingw32' 'target_alias=x86_64-w64-mingw32' 'CFLAGS=-march=x86-64 -mtune=generic -O2 -pipe' 'LDFLAGS=-pipe -Wl,--dynamicbase,--high-entropy-va,--nxcompat' 'LIBS=-lsecur32 -lws2_32 -lgdi32 -lcrypt32 -lwldap32' 'CPPFLAGS=-D__USE_MINGW_ANSI_STDIO=1' 'CXXFLAGS=-march=x86-64 -mtune=generic -O2 -pipe' 'PKG_CONFIG=/mingw64/bin/pkg-config --static' 'PKG_CONFIG_PATH=/mingw64/lib/pkgconfig:/mingw64/share/pkgconfig'"
+
 /* Define to the default TCP port number on which the server listens and to
    which clients will try to connect. This can be overridden at run-time, but
    it's convenient if your clients have the right default compiled in.
@@ -61,22 +64,6 @@
 /* Define to 1 to build client libraries as thread-safe code.
    (--enable-thread-safety) */
 /* #undef ENABLE_THREAD_SAFETY */
-
-/* Define to nothing if C supports flexible array members, and to 1 if it does
-   not. That way, with a declaration like `struct s { int n; double
-   d[FLEXIBLE_ARRAY_MEMBER]; };', the struct hack can be used with pre-C99
-   compilers. When computing the size of such an object, don't use 'sizeof
-   (struct s)' as it overestimates the size. Use 'offsetof (struct s, d)'
-   instead. Don't use 'offsetof (struct s, d[0])', as this doesn't work with
-   MSVC and with C++ compilers. */
-#define FLEXIBLE_ARRAY_MEMBER /**/
-
-/* float4 values are passed by value if 'true', by reference if 'false' */
-#define FLOAT4PASSBYVAL true
-
-/* float8, int8, and related values are passed by value if 'true', by
-   reference if 'false' */
-#define FLOAT8PASSBYVAL true
 
 /* Define to 1 if gettimeofday() takes only 1 argument. */
 /* #undef GETTIMEOFDAY_1ARG */
@@ -97,17 +84,14 @@
 /* Define to 1 if you have the <atomic.h> header file. */
 /* #undef HAVE_ATOMIC_H */
 
+/* Define to 1 if you have the `backtrace_symbols' function. */
+/* #undef HAVE_BACKTRACE_SYMBOLS */
+
 /* Define to 1 if you have the `BIO_get_data' function. */
 #define HAVE_BIO_GET_DATA 1
 
 /* Define to 1 if you have the `BIO_meth_new' function. */
 #define HAVE_BIO_METH_NEW 1
-
-/* Define to 1 if you have the `cbrt' function. */
-#define HAVE_CBRT 1
-
-/* Define to 1 if you have the `class' function. */
-/* #undef HAVE_CLASS */
 
 /* Define to 1 if you have the `clock_gettime' function. */
 #define HAVE_CLOCK_GETTIME 1
@@ -124,14 +108,8 @@
 /* Define to 1 if you have the <crtdefs.h> header file. */
 #define HAVE_CRTDEFS_H 1
 
-/* Define to 1 if you have the `crypt' function. */
-/* #undef HAVE_CRYPT */
-
 /* Define to 1 if you have the `CRYPTO_lock' function. */
 /* #undef HAVE_CRYPTO_LOCK */
-
-/* Define to 1 if you have the <crypt.h> header file. */
-/* #undef HAVE_CRYPT_H */
 
 /* Define to 1 if you have the declaration of `fdatasync', and to 0 if you
    don't. */
@@ -202,23 +180,17 @@
 /* Define to 1 if you have the <editline/readline.h> header file. */
 /* #undef HAVE_EDITLINE_READLINE_H */
 
+/* Define to 1 if you have the <execinfo.h> header file. */
+/* #undef HAVE_EXECINFO_H */
+
+/* Define to 1 if you have the `explicit_bzero' function. */
+/* #undef HAVE_EXPLICIT_BZERO */
+
 /* Define to 1 if you have the `fdatasync' function. */
 /* #undef HAVE_FDATASYNC */
 
 /* Define to 1 if you have the `fls' function. */
 /* #undef HAVE_FLS */
-
-/* Define to 1 if you have the `fpclass' function. */
-/* #undef HAVE_FPCLASS */
-
-/* Define to 1 if you have the `fp_class' function. */
-/* #undef HAVE_FP_CLASS */
-
-/* Define to 1 if you have the `fp_class_d' function. */
-/* #undef HAVE_FP_CLASS_D */
-
-/* Define to 1 if you have the <fp_class.h> header file. */
-/* #undef HAVE_FP_CLASS_H */
 
 /* Define to 1 if fseeko (and presumably ftello) exists and is declared. */
 #define HAVE_FSEEKO 1
@@ -268,7 +240,7 @@
 #define HAVE_GETOPT_LONG 1
 
 /* Define to 1 if you have the `getpeereid' function. */
-#define HAVE_GETPEEREID 1
+/* #undef HAVE_GETPEEREID */
 
 /* Define to 1 if you have the `getpeerucred' function. */
 /* #undef HAVE_GETPEERUCRED */
@@ -297,9 +269,6 @@
 /* Define to 1 if you have the `history_truncate_file' function. */
 /* #undef HAVE_HISTORY_TRUNCATE_FILE */
 
-/* Define to 1 if you have the <ieeefp.h> header file. */
-#define HAVE_IEEEFP_H 1
-
 /* Define to 1 if you have the <ifaddrs.h> header file. */
 /* #undef HAVE_IFADDRS_H */
 
@@ -311,9 +280,6 @@
 
 /* Define to 1 if the system has the type `int8'. */
 /* #undef HAVE_INT8 */
-
-/* Define to 1 if the system has the type `intptr_t'. */
-#define HAVE_INTPTR_T 1
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
@@ -330,8 +296,11 @@
 /* Define to 1 if you have support for IPv6. */
 #define HAVE_IPV6 1
 
-/* Define to 1 if you have isinf(). */
-#define HAVE_ISINF 1
+/* Define to 1 if __builtin_constant_p(x) implies "i"(x) acceptance. */
+/* #undef HAVE_I_CONSTRAINT__BUILTIN_CONSTANT_P */
+
+/* Define to 1 if you have the `kqueue' function. */
+/* #undef HAVE_KQUEUE */
 
 /* Define to 1 if you have the <langinfo.h> header file. */
 /* #undef HAVE_LANGINFO_H */
@@ -378,14 +347,14 @@
 /* Define to 1 if you have the `z' library (-lz). */
 #define HAVE_LIBZ 1
 
+/* Define to 1 if you have the `link' function. */
+/* #undef HAVE_LINK */
+
 /* Define to 1 if the system has the type `locale_t'. */
 /* #undef HAVE_LOCALE_T */
 
 /* Define to 1 if `long int' works and is 64 bits. */
 /* #undef HAVE_LONG_INT_64 */
-
-/* Define to 1 if the system has the type `long long int'. */
-#define HAVE_LONG_LONG_INT 1
 
 /* Define to 1 if `long long int' works and is 64 bits. */
 #define HAVE_LONG_LONG_INT_64 1
@@ -396,11 +365,11 @@
 /* Define to 1 if you have the `mbstowcs_l' function. */
 /* #undef HAVE_MBSTOWCS_L */
 
-/* Define to 1 if you have the `memmove' function. */
-#define HAVE_MEMMOVE 1
-
 /* Define to 1 if you have the <memory.h> header file. */
 #define HAVE_MEMORY_H 1
+
+/* Define to 1 if you have the `memset_s' function. */
+/* #undef HAVE_MEMSET_S */
 
 /* Define to 1 if the system has the type `MINIDUMP_TYPE'. */
 #define HAVE_MINIDUMP_TYPE 1
@@ -477,9 +446,6 @@
 /* Define to 1 if you have the `readlink' function. */
 /* #undef HAVE_READLINK */
 
-/* Define to 1 if you have the `rint' function. */
-#define HAVE_RINT 1
-
 /* Define to 1 if you have the global variable
    'rl_completion_append_character'. */
 /* #undef HAVE_RL_COMPLETION_APPEND_CHARACTER */
@@ -487,8 +453,20 @@
 /* Define to 1 if you have the `rl_completion_matches' function. */
 /* #undef HAVE_RL_COMPLETION_MATCHES */
 
+/* Define to 1 if you have the global variable 'rl_completion_suppress_quote'.
+   */
+/* #undef HAVE_RL_COMPLETION_SUPPRESS_QUOTE */
+
 /* Define to 1 if you have the `rl_filename_completion_function' function. */
 /* #undef HAVE_RL_FILENAME_COMPLETION_FUNCTION */
+
+/* Define to 1 if you have the global variable 'rl_filename_quote_characters'.
+   */
+/* #undef HAVE_RL_FILENAME_QUOTE_CHARACTERS */
+
+/* Define to 1 if you have the global variable 'rl_filename_quoting_function'.
+   */
+/* #undef HAVE_RL_FILENAME_QUOTING_FUNCTION */
 
 /* Define to 1 if you have the `rl_reset_screen_size' function. */
 /* #undef HAVE_RL_RESET_SCREEN_SIZE */
@@ -513,12 +491,6 @@
 
 /* Define to 1 if you have the `srandom' function. */
 /* #undef HAVE_SRANDOM */
-
-/* Define to 1 if you have SSL_clear_options() */
-#define HAVE_SSL_CLEAR_OPTIONS 1
-
-/* Define to 1 if you have the `SSL_get_current_compression' function. */
-#define HAVE_SSL_GET_CURRENT_COMPRESSION 1
 
 /* Define to 1 if stdbool.h conforms to C99. */
 #define HAVE_STDBOOL_H 1
@@ -595,6 +567,9 @@
 /* Define to 1 if `__ss_len' is a member of `struct sockaddr_storage'. */
 /* #undef HAVE_STRUCT_SOCKADDR_STORAGE___SS_LEN */
 
+/* Define to 1 if the system has the type `struct sockaddr_un'. */
+/* #undef HAVE_STRUCT_SOCKADDR_UN */
+
 /* Define to 1 if `tm_zone' is a member of `struct tm'. */
 /* #undef HAVE_STRUCT_TM_TM_ZONE */
 
@@ -609,6 +584,9 @@
 
 /* Define to 1 if you have the <sys/epoll.h> header file. */
 /* #undef HAVE_SYS_EPOLL_H */
+
+/* Define to 1 if you have the <sys/event.h> header file. */
+/* #undef HAVE_SYS_EVENT_H */
 
 /* Define to 1 if you have the <sys/ipc.h> header file. */
 /* #undef HAVE_SYS_IPC_H */
@@ -655,15 +633,8 @@
 /* Define to 1 if you have the <termios.h> header file. */
 /* #undef HAVE_TERMIOS_H */
 
-/* Define to 1 if your `struct tm' has `tm_zone'. Deprecated, use
-   `HAVE_STRUCT_TM_TM_ZONE' instead. */
-/* #undef HAVE_TM_ZONE */
-
 /* Define to 1 if your compiler understands `typeof' or something similar. */
 #define HAVE_TYPEOF 1
-
-/* Define to 1 if you have the external array `tzname'. */
-#define HAVE_TZNAME 1
 
 /* Define to 1 if you have the <ucred.h> header file. */
 /* #undef HAVE_UCRED_H */
@@ -674,35 +645,17 @@
 /* Define to 1 if the system has the type `uint8'. */
 /* #undef HAVE_UINT8 */
 
-/* Define to 1 if the system has the type `uintptr_t'. */
-#define HAVE_UINTPTR_T 1
-
 /* Define to 1 if the system has the type `union semun'. */
 /* #undef HAVE_UNION_SEMUN */
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1
 
-/* Define to 1 if you have unix sockets. */
-/* #undef HAVE_UNIX_SOCKETS */
-
 /* Define to 1 if you have the `unsetenv' function. */
 #define HAVE_UNSETENV 1
 
-/* Define to 1 if the system has the type `unsigned long long int'. */
-#define HAVE_UNSIGNED_LONG_LONG_INT 1
-
 /* Define to 1 if you have the `uselocale' function. */
 /* #undef HAVE_USELOCALE */
-
-/* Define to 1 if you have the `utime' function. */
-#define HAVE_UTIME 1
-
-/* Define to 1 if you have the `utimes' function. */
-/* #undef HAVE_UTIMES */
-
-/* Define to 1 if you have the <utime.h> header file. */
-#define HAVE_UTIME_H 1
 
 /* Define to 1 if you have BSD UUID support. */
 /* #undef HAVE_UUID_BSD */
@@ -718,9 +671,6 @@
 
 /* Define to 1 if you have the <uuid/uuid.h> header file. */
 /* #undef HAVE_UUID_UUID_H */
-
-/* Define to 1 if you have the <wchar.h> header file. */
-#define HAVE_WCHAR_H 1
 
 /* Define to 1 if you have the `wcstombs_l' function. */
 /* #undef HAVE_WCSTOMBS_L */
@@ -807,16 +757,16 @@
 #define PACKAGE_NAME "PostgreSQL"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "PostgreSQL 12.2"
+#define PACKAGE_STRING "PostgreSQL 13.2"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "postgresql"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL ""
+#define PACKAGE_URL "https://www.postgresql.org/"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "12.2"
+#define PACKAGE_VERSION "13.2"
 
 /* Define to the name of a signed 128-bit integer type. */
 #define PG_INT128_TYPE __int128
@@ -829,19 +779,28 @@
 #define PG_KRB_SRVNAM "postgres"
 
 /* PostgreSQL major version as a string */
-#define PG_MAJORVERSION "12"
+#define PG_MAJORVERSION "13"
+
+/* PostgreSQL major version number */
+#define PG_MAJORVERSION_NUM 13
+
+/* PostgreSQL minor version number */
+#define PG_MINORVERSION_NUM 2
 
 /* Define to best printf format archetype, usually gnu_printf if available. */
 #define PG_PRINTF_ATTRIBUTE gnu_printf
 
+/* Define to 1 to use <stdbool.h> to define type bool. */
+#define PG_USE_STDBOOL 1
+
 /* PostgreSQL version as a string */
-#define PG_VERSION "12.2"
+#define PG_VERSION "13.2"
 
 /* PostgreSQL version as a number */
-#define PG_VERSION_NUM 120002
+#define PG_VERSION_NUM 130002
 
 /* A string containing the version number, platform, and C compiler */
-#define PG_VERSION_STR "PostgreSQL 12.2 on x86_64-w64-mingw32, compiled by x86_64-w64-mingw32-gcc.exe (Built by Jeroen for the R-project) 8.3.0, 64-bit"
+#define PG_VERSION_STR "PostgreSQL 13.2 on x86_64-w64-mingw32, compiled by x86_64-w64-mingw32-gcc.exe (Built by Jeroen for the R-project) 8.3.0, 64-bit"
 
 /* Define to 1 to allow profiling output to be saved separately for each
    process. */
@@ -885,9 +844,6 @@
 /* Define to 1 if strerror_r() returns int. */
 /* #undef STRERROR_R_INT */
 
-/* Define to 1 if your <sys/time.h> declares `struct tm'. */
-/* #undef TM_IN_SYS_TIME */
-
 /* Define to 1 to use ARMv8 CRC Extension. */
 /* #undef USE_ARMV8_CRC32C */
 
@@ -905,14 +861,6 @@
 
 /* Define to use /dev/urandom for random number generation */
 /* #undef USE_DEV_URANDOM */
-
-/* Define to 1 if you want float4 values to be passed by value.
-   (--enable-float4-byval) */
-#define USE_FLOAT4_BYVAL 1
-
-/* Define to 1 if you want float8, int8, etc values to be passed by value.
-   (--enable-float8-byval) */
-#define USE_FLOAT8_BYVAL 1
 
 /* Define to build with ICU support. (--with-icu) */
 /* #undef USE_ICU */
@@ -1011,10 +959,6 @@
 /* #undef inline */
 #endif
 
-/* Define to the type of a signed integer type wide enough to hold a pointer,
-   if such a type exists, and if the system does not define it. */
-/* #undef intptr_t */
-
 /* Define to keyword to use for C99 restrict support, or to nothing if not
    supported */
 #define pg_restrict __restrict
@@ -1033,12 +977,5 @@
 # define __restrict__
 #endif
 
-/* Define to empty if the C compiler does not understand signed types. */
-/* #undef signed */
-
 /* Define to how the compiler spells `typeof'. */
 /* #undef typeof */
-
-/* Define to the type of an unsigned integer type wide enough to hold a
-   pointer, if such a type exists, and if the system does not define it. */
-/* #undef uintptr_t */

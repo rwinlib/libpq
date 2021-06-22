@@ -4,7 +4,7 @@
  *	  This file contains definitions for structures and
  *	  externs for functions used by frontend postgres applications.
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/interfaces/libpq/libpq-fe.h
@@ -67,7 +67,8 @@ typedef enum
 								 * connection. */
 	CONNECTION_CONSUME,			/* Wait for any pending message and consume
 								 * them. */
-	CONNECTION_GSS_STARTUP		/* Negotiating GSSAPI. */
+	CONNECTION_GSS_STARTUP,		/* Negotiating GSSAPI. */
+	CONNECTION_CHECK_TARGET		/* Check if we have a proper target connection */
 } ConnStatusType;
 
 typedef enum
@@ -287,7 +288,7 @@ extern PQconninfoOption *PQconninfo(PGconn *conn);
 extern void PQconninfoFree(PQconninfoOption *connOptions);
 
 /*
- * close the current connection and restablish a new one with the same
+ * close the current connection and reestablish a new one with the same
  * parameters
  */
 /* Asynchronous (non-blocking) */
@@ -565,10 +566,10 @@ extern void PQdisplayTuples(const PGresult *res,
 
 extern void PQprintTuples(const PGresult *res,
 						  FILE *fout,	/* output stream */
-						  int printAttName, /* print attribute names */
-						  int terseOutput,	/* delimiter bars */
-						  int width);	/* width of column, if 0, use variable
-										 * width */
+						  int PrintAttNames,	/* print attribute names */
+						  int TerseOutput,	/* delimiter bars */
+						  int colWidth);	/* width of column, if 0, use
+											 * variable width */
 
 
 /* === in fe-lobj.c === */
@@ -615,6 +616,14 @@ extern char *PQencryptPasswordConn(PGconn *conn, const char *passwd, const char 
 extern int	pg_char_to_encoding(const char *name);
 extern const char *pg_encoding_to_char(int encoding);
 extern int	pg_valid_server_encoding_id(int encoding);
+
+/* === in fe-secure-openssl.c === */
+
+/* Support for overriding sslpassword handling with a callback. */
+typedef int (*PQsslKeyPassHook_OpenSSL_type) (char *buf, int size, PGconn *conn);
+extern PQsslKeyPassHook_OpenSSL_type PQgetSSLKeyPassHook_OpenSSL(void);
+extern void PQsetSSLKeyPassHook_OpenSSL(PQsslKeyPassHook_OpenSSL_type hook);
+extern int	PQdefaultSSLKeyPassHook_OpenSSL(char *buf, int size, PGconn *conn);
 
 #ifdef __cplusplus
 }

@@ -3,7 +3,7 @@
  * schemapg.h
  *    Schema_pg_xxx macros for use by relcache.c
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * NOTES
@@ -24,8 +24,8 @@
 { 1255, {"pronamespace"}, 26, -1, 4, 3, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1255, {"proowner"}, 26, -1, 4, 4, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1255, {"prolang"}, 26, -1, 4, 5, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
-{ 1255, {"procost"}, 700, -1, 4, 6, 0, -1, -1, FLOAT4PASSBYVAL, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
-{ 1255, {"prorows"}, 700, -1, 4, 7, 0, -1, -1, FLOAT4PASSBYVAL, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
+{ 1255, {"procost"}, 700, -1, 4, 6, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
+{ 1255, {"prorows"}, 700, -1, 4, 7, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1255, {"provariadic"}, 26, -1, 4, 8, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1255, {"prosupport"}, 24, -1, 4, 9, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1255, {"prokind"}, 18, -1, 1, 10, 0, -1, -1, true, 'p', 'c', true, false, false, '\0', '\0', false, true, 0, 0 }, \
@@ -120,7 +120,7 @@
 { 1259, {"relfilenode"}, 26, -1, 4, 8, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1259, {"reltablespace"}, 26, -1, 4, 9, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1259, {"relpages"}, 23, -1, 4, 10, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
-{ 1259, {"reltuples"}, 700, -1, 4, 11, 0, -1, -1, FLOAT4PASSBYVAL, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
+{ 1259, {"reltuples"}, 700, -1, 4, 11, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1259, {"relallvisible"}, 23, -1, 4, 12, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1259, {"reltoastrelid"}, 26, -1, 4, 13, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 1259, {"relhasindex"}, 16, -1, 1, 14, 0, -1, -1, true, 'p', 'c', true, false, false, '\0', '\0', false, true, 0, 0 }, \
@@ -215,7 +215,7 @@
 { 6100, {"subowner"}, 26, -1, 4, 4, 0, -1, -1, true, 'p', 'i', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 6100, {"subenabled"}, 16, -1, 1, 5, 0, -1, -1, true, 'p', 'c', true, false, false, '\0', '\0', false, true, 0, 0 }, \
 { 6100, {"subconninfo"}, 25, -1, -1, 6, 0, -1, -1, false, 'x', 'i', true, false, false, '\0', '\0', false, true, 0, 950 }, \
-{ 6100, {"subslotname"}, 19, -1, NAMEDATALEN, 7, 0, -1, -1, false, 'p', 'c', true, false, false, '\0', '\0', false, true, 0, 950 }, \
+{ 6100, {"subslotname"}, 19, -1, NAMEDATALEN, 7, 0, -1, -1, false, 'p', 'c', false, false, false, '\0', '\0', false, true, 0, 950 }, \
 { 6100, {"subsynccommit"}, 25, -1, -1, 8, 0, -1, -1, false, 'x', 'i', true, false, false, '\0', '\0', false, true, 0, 950 }, \
 { 6100, {"subpublications"}, 1009, -1, -1, 9, 1, -1, -1, false, 'x', 'i', true, false, false, '\0', '\0', false, true, 0, 950 }
 

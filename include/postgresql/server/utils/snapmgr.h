@@ -3,7 +3,7 @@
  * snapmgr.h
  *	  POSTGRES snapshot manager
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/include/utils/snapmgr.h
@@ -14,7 +14,6 @@
 #define SNAPMGR_H
 
 #include "access/transam.h"
-#include "fmgr.h"
 #include "utils/relcache.h"
 #include "utils/resowner.h"
 #include "utils/snapshot.h"
@@ -38,7 +37,7 @@
  */
 #define RelationAllowsEarlyPruning(rel) \
 ( \
-	 RelationNeedsWAL(rel) \
+	 (rel)->rd_rel->relpersistence == RELPERSISTENCE_PERMANENT	\
   && !IsCatalogRelation(rel) \
   && !RelationIsAccessibleInLogicalDecoding(rel) \
 )

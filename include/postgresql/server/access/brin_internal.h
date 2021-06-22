@@ -2,7 +2,7 @@
  * brin_internal.h
  *		internal declarations for BRIN indexes
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * IDENTIFICATION
@@ -69,6 +69,7 @@ typedef struct BrinDesc
 #define BRIN_PROCNUM_CONSISTENT		3
 #define BRIN_PROCNUM_UNION			4
 #define BRIN_MANDATORY_NPROCS		4
+#define BRIN_PROCNUM_OPTIONS 		5	/* optional */
 /* procedure numbers up to 10 are reserved for BRIN future expansion */
 #define BRIN_FIRST_OPTIONAL_PROCNUM 11
 #define BRIN_LAST_OPTIONAL_PROCNUM	15

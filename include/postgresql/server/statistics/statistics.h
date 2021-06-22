@@ -3,7 +3,7 @@
  * statistics.h
  *	  Extended statistics and selectivity estimation functions.
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/include/statistics/statistics.h
@@ -22,7 +22,7 @@
 #define STATS_NDISTINCT_MAGIC		0xA352BFA4	/* struct identifier */
 #define STATS_NDISTINCT_TYPE_BASIC	1	/* struct version */
 
-/* MVDistinctItem represents a single combination of columns */
+/* MVNDistinctItem represents a single combination of columns */
 typedef struct MVNDistinctItem
 {
 	double		ndistinct;		/* ndistinct value for this combination */
@@ -100,6 +100,8 @@ extern MCVList *statext_mcv_load(Oid mvoid);
 extern void BuildRelationExtStatistics(Relation onerel, double totalrows,
 									   int numrows, HeapTuple *rows,
 									   int natts, VacAttrStats **vacattrstats);
+extern int	ComputeExtStatisticsRows(Relation onerel,
+									 int natts, VacAttrStats **stats);
 extern bool statext_is_kind_built(HeapTuple htup, char kind);
 extern Selectivity dependencies_clauselist_selectivity(PlannerInfo *root,
 													   List *clauses,

@@ -4,7 +4,7 @@
  *	  POSTGRES heap access XLOG definitions.
  *
  *
- * Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
+ * Portions Copyright (c) 1996-2020, PostgreSQL Global Development Group
  * Portions Copyright (c) 1994, Regents of the University of California
  *
  * src/include/access/heapam_xlog.h
@@ -136,8 +136,6 @@ typedef struct xl_heap_truncate
  * or updated tuple in WAL; we can save a few bytes by reconstructing the
  * fields that are available elsewhere in the WAL record, or perhaps just
  * plain needn't be reconstructed.  These are the fields we must store.
- * NOTE: t_hoff could be recomputed, but we may as well store it because
- * it will come for free due to alignment considerations.
  */
 typedef struct xl_heap_header
 {
@@ -168,7 +166,7 @@ typedef struct xl_heap_insert
  *
  * In block 0's data portion, there is an xl_multi_insert_tuple struct,
  * followed by the tuple data for each tuple. There is padding to align
- * each xl_multi_insert struct.
+ * each xl_multi_insert_tuple struct.
  */
 typedef struct xl_heap_multi_insert
 {
@@ -195,14 +193,14 @@ typedef struct xl_multi_insert_tuple
  *
  * Backup blk 0: new page
  *
- * If XLOG_HEAP_PREFIX_FROM_OLD or XLOG_HEAP_SUFFIX_FROM_OLD flags are set,
+ * If XLH_UPDATE_PREFIX_FROM_OLD or XLH_UPDATE_SUFFIX_FROM_OLD flags are set,
  * the prefix and/or suffix come first, as one or two uint16s.
  *
  * After that, xl_heap_header and new tuple data follow.  The new tuple
  * data doesn't include the prefix and suffix, which are copied from the
  * old tuple on replay.
  *
- * If HEAP_CONTAINS_NEW_TUPLE_DATA flag is given, the tuple data is
+ * If XLH_UPDATE_CONTAINS_NEW_TUPLE flag is given, the tuple data is
  * included even if a full-page image was taken.
  *
  * Backup blk 1: old page, if different. (no data, just a reference to the blk)
@@ -217,8 +215,8 @@ typedef struct xl_heap_update
 	OffsetNumber new_offnum;	/* new tuple's offset */
 
 	/*
-	 * If XLOG_HEAP_CONTAINS_OLD_TUPLE or XLOG_HEAP_CONTAINS_OLD_KEY flags are
-	 * set, a xl_heap_header struct and tuple data for the old tuple follows.
+	 * If XLH_UPDATE_CONTAINS_OLD_TUPLE or XLH_UPDATE_CONTAINS_OLD_KEY flags
+	 * are set, xl_heap_header and tuple data for the old tuple follow.
 	 */
 } xl_heap_update;
 
